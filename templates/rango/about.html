@@ -1,32 +1,25 @@
-<!DOCTYPE html>
+{% extends 'rango/base.html' %}
+{% load staticfiles %}
 
-{% load staticfiles %} <!-- New line -->
+{% block title_block %}
+    About
+{% endblock %}
 
-<html>
 
-    <head>
-        <title>Rango</title>
 
-        <!-- CSS -->
-        <!-- <link rel="stylesheet" href="{% static "css/base.css" %}" /> -->
-        <!-- JavaScript -->
-        <!-- <script src="{% static "js/jquery.js" %}"></script> -->
+{% block body_block %}
 
-    </head>
 
-    <body>
-        <h1>Rango says...</h1>
-        <div>
-            here is the about page <br />
-            <strong>{{ boldmessage }}</strong><br />
-        </div>
-        <div>
-            <a href="/rango/">Index</a><br />
-            <img src="{% static "images/rango2.jpg" %}"
-                 alt="Picture of Rango" />
-            <img src="{{ MEDIA_URL}}cat.jpg" />
+    <div>
+        here is the about page. <br />
+        <strong>{{ boldmessage }}</strong><br />
+    </div>
 
-        </div>
-    </body>
+    <div>
+        <img src="{% static "images/rango2.jpg" %}" alt="Picture of Rango" />
+        <img src="{{ MEDIA_URL}}cat.jpg" />
 
-</html>
+    </div>
+
+{% endblock %}
+
