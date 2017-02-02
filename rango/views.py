@@ -44,6 +44,7 @@ def index(request):
     context_dict = {'categories': category_list, 'pages': page_list}
     visitor_cookie_handler(request)
     context_dict['visits'] = request.session['visits']
+    print(request.session['visits'])
     response = render(request, 'rango/index.html', context=context_dict)
     return response
 
@@ -64,9 +65,9 @@ def about(request):
     #return render(request, 'rango/about.html', context=context_dict)
 
     # prints out whether the method is a GET or a POST
-    print(request.method)
+    #print(request.method)
     # prints out the user name, if no one is logged in it prints `AnonymousUser`
-    print(request.user)
+    #print(request.user)
     return render(request, 'rango/about.html', {})
 
 
@@ -152,6 +153,7 @@ def add_page(request, category_name_slug):
     context_dict = {'form':form, 'category': category}
     return render(request, 'rango/add_page.html', context_dict)
 
+"""
 def register(request):
     # A boolean value for telling the template
     # whether the registration was successful.
@@ -211,7 +213,9 @@ def register(request):
                 {'user_form': user_form,
                     'profile_form': profile_form,
                     'registered': registered})
+"""
 
+"""
 def user_login(request):
     # If the request is a HTTP POST, try to pull out the relevant information.
     if request.method == 'POST':
@@ -253,15 +257,18 @@ def user_login(request):
         # No context variables to pass to the template system, hence the
         # blank dictionary object...
         return render(request, 'rango/login.html', {})
+"""
 
 @login_required
 def restricted(request):
     #return HttpResponse("Since you're logged in, you can see this text!")
     return render(request, 'rango/restricted.html', {})
 
+""""
 @login_required
 def user_logout(request):
     # Since we know the user is logged in, we can now just log them out.
     logout(request)
     # Take the user back to the homepage.
     return HttpResponseRedirect(reverse('index'))
+"""
