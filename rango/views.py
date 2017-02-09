@@ -50,10 +50,11 @@ def index(request):
 
 
 def about(request):
-    if request.session.test_cookie_worked():
-        print("TEST COOKIE WORKED!")
-    request.session.delete_test_cookie()
-
+    #if request.session.test_cookie_worked():
+    #    print("TEST COOKIE WORKED!")
+    #request.session.delete_test_cookie()
+    visitor_cookie_handler(request)
+    context_dict = {'visits' : request.session['visits']}
 
     # Construct a dictionary to pass to the template engine as its context.
     # Note the key boldmessage is the same as {{ boldmessage }} in the template!
@@ -68,7 +69,7 @@ def about(request):
     #print(request.method)
     # prints out the user name, if no one is logged in it prints `AnonymousUser`
     #print(request.user)
-    return render(request, 'rango/about.html', {})
+    return render(request, 'rango/about.html',context=context_dict)
 
 
 def show_category(request, category_name_slug):
